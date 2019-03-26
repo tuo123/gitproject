@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>错误页面 </title>
+	<link/>
+</head>
+<body>
+	<center>
+		<h6 th:text="${error}"></h6>
+	</center>	
+<scripts th:replace="share/scripts :: scripts(~{::script})" >
+<script type="text/javascript" >
+</script>
+</scripts>
+</body>
+</html>

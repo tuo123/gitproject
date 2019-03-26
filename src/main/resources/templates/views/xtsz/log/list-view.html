@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>日志管理</title>
+	<link>
+</head>
+<body>
+	<!--  表格  -->
+	<div class="grid-container">
+		<div id="toolbar-grid"></div>
+		<table id="data-grid" style="width: 100%;"></table>
+	</div>
+
+	<!--  日志 详情  -->
+	<div id="log-detail" class="easyui-window" title="日志详情"
+		style="padding: 10px"
+		 data-options="iconCls:'icon-save',
+		 modal:true,
+		 closed: true,
+		 width: '1000px',
+		 height: '600px',
+		 zIndex: '100'
+		 " >
+		<table th:replace="views/xtsz/log/detail-view :: table" ></table>
+	</div>
+	<!-- 引入腳本  -->
+	<scripts th:replace="share/scripts :: scripts(~{::script})" >
+		<script type="text/javascript" src="/custom/xtsz/log/list-view.js"></script>
+	</scripts>
+</body>
+</html>

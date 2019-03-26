@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>首页</title>
+	<link rel="stylesheet" type="text/css" href="/custom/css/home/index.css">
+</head>
+<body class="easyui-layout" id="main-layout">
+	<div data-options="region:'north',split:true" style="height: 100px;"
+		class="bg-top" id="top-title">
+		<div class="index-title ">
+			<h1 style="color: white;">
+				时利和管理后台
+			</h1>
+			<div class="user-info">
+				<div style="padding: 5px;">
+					<a href="#" class="easyui-menubutton" menu="#umenu"
+						iconCls="icon-user" style="color: white;" id="top-user-info" >
+					</a>
+				</div>
+				<div id="umenu" style="width: 150px;">
+					<div iconCls="icon-help" data-open="/home/downloadbzwd">操作文档</div>
+					<div iconCls="icon-key" id="mmxg">密码修改</div>
+					<div iconCls="icon-theme">
+						<span>主题</span>
+						<div style="width: 150px;" id="set-theme">
+							<div data-value="2">default</div>
+							<div data-value="0">bootstrap</div>
+							<div data-value="1">black</div>
+							<div data-value="3">gray</div>
+							<div data-value="4">material</div>
+							<div data-value="5">metro</div>
+							<div data-value="6">ui-cupertino</div>
+							<div data-value="7">ui-dark-hive</div>
+							<div data-value="8">ui-pepper-grinder</div>
+							<div data-value="9">ui-sunny</div>
+						</div>
+					</div>
+					<div iconCls="icon-undo" id="logout" data-url="/home/logout">注销</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="west-menu"
+		data-options="region:'west',split:true,title: '选择操作菜单'"
+		style="width: 200px;">
+		<div id="left-menus">
+			<div class="sys-menus"></div>
+		</div>
+	</div>
+	<!--  首页内容 -->
+	<div data-options="region:'center'">
+		<div id="top-tabs" class="easyui-tabs"
+			style="width: 100%; height: 100%;">
+			<div title="首页" style="padding: 5px;" >
+				<div align="center" style="margin-top:300px">
+					<h1>欢迎使用时利和管理后台</h1>			
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--  底部  -->
+	<div data-options="region:'south',split:true"
+		style="height: 35px; text-align: center;">
+		<p style="line-height: 2px;">时利和</p>
+	</div>
+
+	<!--  密码修改 -->
+	<div id="changepwd-win" class="easyui-window" title="密码修改" style="width: 400px; height: 300px;" data-options="closed:true">
+		<form id="changepwd-form" method="post" style="padding: 20px;">
+			<div style="margin-bottom: 10px">
+				<input class="easyui-passwordbox easyui-validatebox" prompt="原始密码"
+					iconWidth="18" id="oldPassword" name="oldPassword"
+					invalidMessage="原始密码不正确！" style="width: 100%;"
+					data-options="label:'原始密码',required:true"
+					validType="remote['/user/checkOldPwd','pwd']">
+			</div>
+			<div style="margin-bottom: 10px">
+				<input class="easyui-passwordbox" prompt="新密码" name="password"
+					id="pwd" iconWidth="18" style="width: 100%;"
+					data-options="label:'新密码',required:true">
+			</div>
+			<div style="margin-bottom: 10px">
+				<input class="easyui-passwordbox easyui-validatebox" prompt="确认密码"
+					name="confirmPwd" id="confirmPwd" iconWidth="18"
+					style="width: 100%;" data-options="label:'确认密码',required:true"
+					validType="equals['#pwd']">
+			</div>
+			<div style="text-align: center; padding: 5px 0">
+				<a href="javascript:void(0)" class="easyui-linkbutton form-submit"
+					style="width: 80px" iconCls="icon-key">修改</a> <a
+					href="javascript:void(0)" class="easyui-linkbutton form-clear"
+					style="width: 80px" iconCls="icon-cancel">清除</a>
+			</div>
+		</form>
+	</div>
+	
+<!-- 引入腳本  -->
+<scripts th:replace="share/scripts :: scripts(~{::script})" >
+<script type="text/javascript" src="/custom/xtsz/index.js"></script>
+</scripts>
+</body>
+</html>

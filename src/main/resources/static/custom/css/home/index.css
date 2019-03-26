@@ -1,0 +1,64 @@
+@charset "UTF-8";
+/*菜单栏样式*/
+.sys-menus .tree-node {
+	height: 35px;
+	line-height: 30px;
+	text-align: justify;
+}
+
+.sys-menus .tree-title {
+	height: 35px;
+	line-height: 20px;
+}
+
+.sys-menus .tree-expanded, .tree-collapsed, .tree-folder, .tree-file,
+	.tree-checkbox, .tree-indent {
+	height: 20px;
+}
+
+/*系统栏样式*/
+div.sys-info-area {
+	border-bottom: 3px solid white;
+}
+
+ul.sys-info {
+	overflow: hidden;
+}
+
+ul.sys-info, ul.sys-info li {
+	margin: 0 auto;
+	padding: 0px;
+}
+
+ul.sys-info li {
+	list-style: none;
+	float: right;
+	margin-right: 5px;
+	padding: 5px;
+	border-radius: 5px 5px 0px 0px;
+	background-color: #0081c2;
+	cursor: pointer;
+}
+
+ul.sys-info li:hover {
+	background-color: white;
+}
+
+ul.sys-info li:hover>a {
+	color: #777;
+}
+
+ul.sys-info li>a {
+	text-decoration: none;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+ul.sys-info li.active {
+	background-color: white;
+}
+
+ul.sys-info li.active a {
+	color: #777;
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>未授权 </title>
+	<link/>
+</head>
+<body >
+	<center>
+		<h1 th:text="${massege}"></h1>
+	</center>	
+<!-- �����_��  -->
+<scripts th:replace="share/scripts :: scripts(~{::script})" >
+<script type="text/javascript" >
+</script>
+</scripts>
+</body>
+</html>

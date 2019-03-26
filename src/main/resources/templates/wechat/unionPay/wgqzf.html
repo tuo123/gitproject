@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta th:replace="/wechat/wx_common/head"></meta>
+<title>待支付订单信息</title>
+</head>
+<body>
+<input type = "hidden"  id="openid" th:value="${openid}"/>
+<input type = "hidden"  id="payGuid" th:value="${payGuid}"/>
+
+<div id="wgqDiv" style="display:none;margin-bottom: 65px;">
+
+
+<div id = "perview">
+
+</div>
+
+<div class="weui-form-preview" >
+	<div class="weui-form-preview__hd">
+	<label class="weui-form-preview__label">支付倒计时：</label><span id="minute_show"></span><span id="second_show"></span>
+	</div>
+</div>
+
+
+
+<div style='height:65px; width:100%;position:fixed;bottom: 0;z-index:1000;background-color: #ffffff;  '>
+ <table style="width:100%;height:100%;">
+	<tr style="width:100%">
+		
+		<td style="width:35%;" align="left"><a href="javascript:;" id="qxdd" class="weui-btn weui-btn_warn">取消订单</a></td>
+		<td style="width:35%;" align="center"><a href="javascript:;" id="jxzf" class="weui-btn weui-btn_primary">继续支付</a></td>
+	</tr>
+</table> 
+
+
+</div>
+</div>
+<div th:replace="/wechat/wx_common/script"></div>	
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/custom/wechat/unionPay/wgqzf.js?random=' + Math.random()+'"></s'+'cript>');
+</script>
+</body>
+</html>

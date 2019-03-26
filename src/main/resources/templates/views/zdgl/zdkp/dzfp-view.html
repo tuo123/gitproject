@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<form id="dzfp-form" method="post" style="padding: 20px;">
+			<input type="hidden" name="guid">
+			<div style="margin-bottom: 10px">
+				<input class="easyui-textbox" id="fptt-form" name="fftp"
+					style="width: 90%;" data-options="label:'发票抬头:',required:true,readonly:true">
+			</div>
+			<div style="margin-bottom: 10px">
+				<input class="easyui-textbox" name="fpje" id="fpje-form"
+					style="width: 90%;" data-options="label:'发票金额:',required:true,readonly:true">
+			</div>
+			<div style="margin-bottom: 10px">
+				<select name="fplx" id="fplx-form" class="easyui-combobox" style="width:90%" data-options="label:'显示商品明细：',required:true,editable:false">
+					<option value="0">否</option>
+					<option value="1">是</option>
+				</select>
+			</div>
+			<div style="margin-bottom: 10px">
+				<label for="fpnrDiv">发票内容:</label>
+				<div style="width:80%;display:inline;" id="fpnrDiv"></div>
+			</div>
+			<div style="margin-bottom: 10px">
+				<input class="easyui-textbox" name="dzyx" id="dzyx-form"
+					style="width: 90%;" data-options="label:'电子邮箱:',required:true,readonly:true">
+			</div>
+			<div style="text-align: center; padding: 5px 0">
+				<a href="javascript:void(0)" class="easyui-linkbutton form-submit"
+					style="width: 80px" iconCls="icon-key">保存</a> <a
+					href="javascript:void(0)" class="easyui-linkbutton form-clear"
+					style="width: 80px" iconCls="icon-cancel">清除</a>
+			</div>
+		</form>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>单位列表</title>
+	<link>
+</head>
+
+<body>
+	<!--  表格  -->
+	<div class="grid-container">
+		<div id="toolbar-grid"></div>
+		<table id="data-grid" style="width: 100%;"></table>
+	</div>
+	
+	<!--  编辑单位 -->
+	<div id="org-dlg" class="easyui-dialog" title="编辑单位" style="width: 550px; height: 220px; padding: 5px" data-options="iconCls:'icon-save',modal:true,closed: true">
+		<form id="org-form" method="post">
+			<input type="hidden" name="guid">
+			<table border="0" width="100%">
+				<tr>
+					<td width="50%">
+						<input class="easyui-textbox" style="width: 95%;" name="dwmc" id="dwmc-form" data-options="label:'单位名称',required:true">
+					</td>
+					<td width="50%">
+						<input class="easyui-textbox" style="width: 95%;" name="nsrbh" id="nsrbh-form" data-options="label:'纳税人编号',required:true">
+					</td>
+				</tr>
+				<tr>
+					<td width="50%">
+						<input class="easyui-textbox" style="width: 95%;" name="dz" id="dz-form" data-options="label:'地址',required:true">
+					</td>
+					<td width="50%">
+						<input class="easyui-textbox" style="width: 95%;" name="khh" id="khh-form" data-options="label:'开户行',required:true">
+					</td>
+				</tr>
+				<tr>
+					<td width="50%">
+						<input class="easyui-textbox" style="width: 95%;" name="dh" id="dh-form" data-options="label:'电话',required:true">
+					</td>
+					<td width="50%">
+						<input class="easyui-textbox" style="width: 95%;" name="zh" id="zh-form" data-options="label:'账号',required:true">
+					</td>
+				</tr>
+				<tr>
+					<td width="50%">
+						<input class="easyui-textbox" style="width: 95%;" name="skr" id="skr-form" data-options="label:'收款人',required:true">
+					</td>
+					<td width="50%">
+						<input class="easyui-textbox" style="width: 95%;" name="fhr" id="fhr-form" data-options="label:'复核人',required:true">
+					</td>
+				</tr>
+				<tr>
+					<td width="50%">
+						<input class="easyui-textbox" style="width: 95%;" name="fxjdskyh" id="fxjdskyh-form" data-options="label:'反写金蝶收款银行',required:true">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<a href="javascript:void(0)" class="easyui-linkbutton form-submit" style="width: 80px" iconCls="icon-key">保存</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton form-clear-custom" style="width: 80px" iconCls="icon-cancel">清除</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+	<!-- 引入腳本  -->
+	<scripts th:replace="share/scripts :: scripts(~{::script})" >
+		<scripts th:replace="share/scripts :: scripts(~{::script})"> <script type="text/javascript" src="/custom/jcxx/org/list-view.js"></script></scripts>
+	</scripts>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta th:replace="/wechat/wx_common/head"></meta>
+<title>用户信息</title>
+<style type="text/css">
+body{
+
+background-color: #ecf0f3;
+}
+
+
+</style>
+</head>
+
+<body>
+<input type="hidden" id = "openid" th:value = "${openid}">
+
+ <div class="weui-cells">
+  <a class="weui-cell weui-cell_access" href="javascript:;" id="grxx">
+    <div class="weui-cell__bd">
+      <p>个人信息</p>
+    </div>
+    <div class="weui-cell__ft">
+    
+    </div>
+  </a>
+
+
+
+</div>
+ <div class="weui-cells">
+  <a class="weui-cell weui-cell_access" href="javascript:;" id="lszd">
+    <div class="weui-cell__bd">
+      <p>历史账单</p>
+    </div>
+    <div class="weui-cell__ft">
+    
+    </div>
+  </a>
+
+</div>
+
+
+<div th:replace="/wechat/wx_common/script"></div>
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/custom/wechat/yhgl/grzx.js?random=' + Math.random()+'"></s'+'cript>');
+</script>
+</body>
+</html>

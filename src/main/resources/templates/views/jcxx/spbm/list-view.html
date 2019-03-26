@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>商品编码管理</title>
+	<link>
+</head>
+<body class="easyui-layout">
+	<div class="" data-options="region:'west',split:true,title: '商品编码管理'" 
+			style="width: 300px; height: 600px; padding: 5px; ">
+		<ul id="spbm-tree"></ul>
+	</div>
+	<div data-options="region:'center', title: '商品编码操作'">
+		<form id="spbm-form" method="post">
+			<input type="hidden" name="guid" />  
+			<input type="hidden" name="ybm" id="ybm">
+			<input type="hidden" name="ymc" id="ymc">
+			<input type="hidden" name="yspflbm" id="yspflbm">
+			<fieldset class="scheduler-border"> 
+				<legend class="scheduler-border">商品编码信息</legend>
+				<table border="0">
+					<tr>
+						<td><label>编码</label></td>
+						<td>
+							<input class="easyui-textbox" name="bm"
+							data-options="required: true" >
+						</td>
+						<td><label>名称</label></td>
+						<td><input class="easyui-textbox" name="mc"
+							data-options="required: true " >
+						</td>
+					</tr>
+					<tr>
+						<td><label>简码</label></td>
+						<td><input class="easyui-textbox" name="jm"
+							data-options="required: true" >
+						</td>
+						<td><label>父級商品编码</label></td>
+						<td><input class="easyui-textbox" name="pid"
+							id="pid-show" data-options="required: true,editable:false"
+							></td>
+					</tr>
+					<tr>
+						<td><label>生产编码</label></td>
+						<td>
+							<input class="easyui-textbox" name="scbm" 
+							data-options="required: false" >
+						</td>
+						<td><label>规格型号</label></td>
+						<td>
+							<input class="easyui-textbox" name="ggxh"
+							data-options="required: false" >
+							</td>
+					</tr>
+					<tr>
+						<td><label>计量单位</label></td>
+						<td>
+							<input class="easyui-textbox" name="jldw" 
+							data-options="required: false" >
+						</td>
+						<td><label>单价</label></td>
+						<td>
+							<input class="easyui-numberbox" name="dj" id="dj"
+							data-options="required: true,precision:2" >
+						</td>
+					</tr>
+					<tr>
+						<td><label>含税标志</label></td>
+						<td>
+							<select class="easyui-combobox" name="hsbz"
+							id="hsbz"
+							data-options="editable:false , data:[{id: '1' , text: '含税'},{id: '0', text: '不含税'}],valueField: 'id', textField: 'text'"
+							style="width: 173px;"></select>
+						</td>
+						<td><label>税率</label></td>
+						<td>
+							<input class="easyui-numberbox" name="sl" id="sl"
+							data-options="required: true,precision:2" >
+						</td>
+					</tr>
+					<tr>
+						<td><label>税率类型</label></td>
+						<td>
+							<input class="easyui-textbox" name="sllx"  data-options="required: false">
+						</td>
+					</tr>
+					<tr>
+						<td><label>商品分类编码</label></td>
+						<td>
+							<input class="easyui-textbox" name="spflbm"
+							data-options="required: true" >
+						</td>
+						<td><label>商品分类编码父类</label></td>
+						<td>
+							<input class="easyui-textbox" name="spflbmpid" id="spflbmpid-show"
+							data-options="required: true" >
+						</td>
+					</tr>
+					
+					<tr>
+						<td><label>使用优惠标志</label></td>
+						<td>
+							<select class="easyui-combobox" name="syyhbz"
+							id="syyhbz"
+							data-options="editable:false , data:[{id: '1' , text: '使用'},{id: '0', text: '未使用'}],valueField: 'id', textField: 'text'"
+							style="width: 173px;"></select>
+						</td>
+						<td><label>优惠政策</label></td>
+						<td>
+							<select class="easyui-combobox" name="yhzc" id="yhzc"  style="width: 180px;" data-options="editable:false,
+							data:[
+							{id: '超税负8%即征即退' , text: '超税负8%即征即退'},
+							{id: '按5%简易征收减按1.5%计征', text: '按5%简易征收减按1.5%计征'},
+							{id: '按5%简易征收', text: '按5%简易征收'},
+							{id: '按3%简易征收', text: '按3%简易征收'},
+							{id: '稀土产品', text: '稀土产品'},
+							{id: '不征税', text: '不征税'},
+							{id: '免税', text: '免税'},
+							{id: '先征后退', text: '先征后退'},
+							{id: '100%先征后退', text: '100%先征后退'},
+							{id: '50%先征后退', text: '50%先征后退'},
+							{id: '即征即退30%', text: '即征即退30%'},
+							{id: '即征即退50%', text: '即征即退50%'},
+							{id: '即征即退70%', text: '即征即退70%'},
+							{id: '即征即退100%', text: '即征即退100%'},
+							{id: '超税负3%即征即退', text: '超税负3%即征即退'},
+							{id: '超税负12%即征即退', text: '超税负12%即征即退'}
+							],
+							valueField: 'id', textField: 'text'">
+<!-- 								<option value="超税负8%即征即退">超税负8%即征即退</option> -->
+<!-- 								<option value="按5%简易征收减按1.5%计征">按5%简易征收减按1.5%计征</option> -->
+<!-- 								<option value="按5%简易征收">按5%简易征收</option> -->
+<!-- 								<option value="按3%简易征收">按3%简易征收</option> -->
+<!-- 								<option value="稀土产品">稀土产品</option> -->
+<!-- 								<option value="不征税">免税</option> -->
+<!-- 								<option value="免税">稀土产品</option> -->
+<!-- 								<option value="先征后退">先征后退</option> -->
+<!-- 								<option value="100%先征后退">100%先征后退</option> -->
+<!-- 								<option value="50%先征后退">50%先征后退</option> -->
+<!-- 								<option value="即征即退30%">即征即退30%</option> -->
+<!-- 								<option value="即征即退50%">即征即退50%</option> -->
+<!-- 								<option value="即征即退70%">即征即退70%</option> -->
+<!-- 								<option value="即征即退100%">即征即退100%</option> -->
+<!-- 								<option value="超税负3%即征即退">超税负3%即征即退</option> -->
+<!-- 								<option value="超税负12%即征即退">超税负12%即征即退</option> -->
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label>商品说明</label></td>
+						<td>
+							<input type="text" class="easyui-textbox" name="spsm" id="spsm" data-options="required: false,multiline:true" style="width: 250px;height:100px" />
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<table border="0">
+				<tr>
+					<td colspan="4" align="center"><a href="javascript:void(0)"
+						class="easyui-linkbutton form-submit" style="width: 80px"
+						iconCls="icon-key">保存</a> <a href="javascript:void(0)"
+						class="easyui-linkbutton form-clear" style="width: 80px"
+						iconCls="icon-cancel">清除</a></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div id="tree-cxt" class="easyui-menu" style="width: 120px;">
+		<div class="cxt-item" data-opr="add" data-options="iconCls:'icon-add'">添加</div>
+		<div class="cxt-item" data-opr="remove"
+			data-options="iconCls:'icon-remove'">删除</div>
+		<div class="cxt-item" data-opr="edit"
+			data-options="iconCls:'icon-edit'">编辑</div>
+		<div class="menu-sep"></div>
+		<div class="cxt-item" data-opr="expand">展开</div>
+		<div class="cxt-item" data-opr="collapse">收起</div>
+	</div>
+	
+	<!-- 引入腳本  -->
+<scripts th:replace="share/scripts :: scripts(~{::script})" >
+<script type="text/javascript" src="/custom/jcxx/spbm/list-view.js"></script>
+</scripts>
+</body>
+</html>

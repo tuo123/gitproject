@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>账单列表</title>
+	<link>
+</head>
+
+<body>
+	<!--  表格  -->
+	<div class="grid-container">
+		<div id="toolbar-grid"></div>
+		<table id="data-grid" style="width: 100%;"></table>
+	</div>
+
+	<!-- 开具电子发票 -->
+	<div id="dzfp-win" class="easyui-window" title="开具电子发票"
+		style="width: 430px; height: 361px"
+		data-options="iconCls:'icon-save',modal:true,closed: true">
+		<form th:replace="views/zdgl/zdkp/dzfp-view :: form" ></form>
+	</div>
+
+	<!-- 引入腳本  -->
+	<scripts th:replace="share/scripts :: scripts(~{::script})" >
+		<script type="text/javascript" src="/custom/zdxx/zdkp/list-view.js"></script>
+	</scripts>
+</body>
+</html>

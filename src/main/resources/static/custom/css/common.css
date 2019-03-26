@@ -1,0 +1,13 @@
+#icon-list {
+	text-align: center;
+}
+#icon-list div {
+	width: 16px;
+	height: 16px;
+	float: left;
+	padding: 2px;
+	border: 1px solid white;
+}
+#icon-list div:hover {
+	border: 1px solid orange;
+}

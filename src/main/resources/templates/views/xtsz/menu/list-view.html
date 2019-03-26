@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>菜单管理</title>
+	<link>
+</head>
+<body class="easyui-layout">
+	<div class="" data-options="region:'west',split:true,title: '菜单栏目管理'" 
+			style="width: 300px; height: 600px; padding: 5px; ">
+		<ul id="menu-tree"></ul>
+	</div>
+	<div data-options="region:'center', title: '菜单栏目操作'">
+		<form id="menu-form" method="post">
+			<input type="hidden" name="guid" /> <input type="hidden"
+				name="iconclass" id="iconclass" /> <input type="hidden"
+				name="funcstr" id="funcstr"> <input type="hidden"
+				name="parentguid" id="parentguid">
+			<fieldset class="scheduler-border"> 
+				<legend class="scheduler-border">菜单基本信息</legend>
+				<table border="0">
+					<tr>
+						<td><label>菜单名称</label></td>
+						<td>
+							<input class="easyui-textbox" name="menuname"
+							data-options="required: true" >
+						</td>
+						<td><label>菜单編碼</label></td>
+						<td><input class="easyui-textbox" name="menualias"
+							data-options="required: true " >
+						</td>
+					</tr>
+					<tr>
+						<td><label>菜单連接</label></td>
+						<td><input class="easyui-textbox" name="menuurl"
+							data-options="required: true" >
+						</td>
+						<td><label>父級菜單</label></td>
+						<td><input class="easyui-textbox" name="parentguid-show"
+							id="parentguid-show" data-options="readonly: true, required: true"
+							></td>
+					</tr>
+					<tr>
+						<td><label>排序值</label></td>
+						<td><input class="easyui-numberbox" name="menuorder"
+							data-options="required: true" ></td>
+						<td><label>是否启用</label></td>
+						<td><select class="easyui-combobox" name="isenabled"
+							id="isenabled"
+							data-options="editable:false , data:[{id: '1' , text: '是'},{id: '0', text: '否'}],valueField: 'id', textField: 'text'"
+							style="width: 173px;"></select></td>
+					</tr>
+					<tr>
+						<td><label>是否显示</label></td>
+						<td><select class="easyui-combobox" name="isvisible"
+							id="isvisible"
+							data-options="editable:false ,required: true, data:[{id: '1' , text: '是'},{id: '0', text: '否'}],valueField: 'id', textField: 'text'"
+							style="width: 173px;"></select></td>
+						<td><label>菜单图标</label></td>
+						<td><input class="easyui-textbox" name="iconclass-show"
+							id="iconclass-show"
+							data-options="required: false,events: { focus: function(){ $('#dlg-icons').dialog('open'); } }"
+							></td>
+					</tr>
+					<tr>
+						<td><label>拥有功能</label></td>
+						<td>
+							<select class="easyui-combobox" name="func-select"
+							id="func-select"
+							data-options="editable:false ,required: false, method:'get',  url: '/func/findAll', valueField:'guid', textField: 'funcname',multiple:true "
+							style="width: 173px;">
+						</select>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<table border="0">
+				<tr>
+					<td colspan="4" align="center"><a href="javascript:void(0)"
+						class="easyui-linkbutton form-submit" style="width: 80px"
+						iconCls="icon-key">保存</a> <a href="javascript:void(0)"
+						class="easyui-linkbutton form-clear" style="width: 80px"
+						iconCls="icon-cancel">清除</a></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div id="dlg-icons" class="easyui-dialog" title="选择图标"
+		data-options="iconCls:'icon-save',closed: true"
+		style="width: 388px; height: 360px; padding: 5px">
+		<div th:replace="views/xtsz/menu/icons :: div"></div>
+	</div>
+	
+	<div id="tree-cxt" class="easyui-menu" style="width: 120px;">
+		<div class="cxt-item" data-opr="add" data-options="iconCls:'icon-add'">添加</div>
+		<div class="cxt-item" data-opr="remove"
+			data-options="iconCls:'icon-remove'">删除</div>
+		<div class="cxt-item" data-opr="edit"
+			data-options="iconCls:'icon-edit'">编辑</div>
+		<div class="menu-sep"></div>
+		<div class="cxt-item" data-opr="expand">展开</div>
+		<div class="cxt-item" data-opr="collapse">收起</div>
+	</div>
+	
+	<!-- 引入腳本  -->
+<scripts th:replace="share/scripts :: scripts(~{::script})" >
+<script type="text/javascript" src="/custom/xtsz/menu/list-view.js"></script>
+</scripts>
+</body>
+</html>

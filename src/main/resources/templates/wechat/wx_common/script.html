@@ -1,0 +1,58 @@
+<script type="text/javascript" src="/wechat/js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="/wechat/js/fastclick.js"></script>
+<script type="text/javascript" src="/wechat/js/jquery-weui.js"></script>
+<script type="text/javascript" src="/wechat/js/iosFastclick.js"></script>
+<script type="text/javascript" src="/wechat/js/jquery.form.js"></script>
+<script type="text/javascript" src="/wechat/js/weui.js"></script>
+<script type="text/javascript" src="/custom/js/common.js"></script>
+<script type="text/javascript" >
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    WeixinJSBridge.call('hideToolbar');
+    WeixinJSBridge.call('hideOptionMenu');
+});
+
+function decNum(a){//获取小数位数
+    var r=0;
+    a=a.toString();
+    if(a.indexOf(".")!== -1) r=a.split(".")[1].length;
+    return r;
+}
+function int(a){//去除小数点并转成数值
+    return parseInt(a.toString().replace(".",""));
+}
+function calc(a,b,type){//加减乘除
+    var r,
+        da = decNum(a),
+        db = decNum(b),
+        dsum = da+db,
+        dmin = Math.min(da,db),
+        dmax = Math.max(da,db);
+    dsum += dmax-dmin;
+    dsum = Math.pow(10,dsum);
+    dmax = Math.pow(10,dmax);
+    a = int(a);
+    b = int(b);
+    //将a、b调整到同一位数
+    if(da>db){
+        b *= Math.pow(10,da-db);
+    }else{
+        a *= Math.pow(10,db-da);
+    }
+    switch(type){
+        case "add":
+            r=(a+b)/dmax;
+            break;
+        case "subtract":
+            r=(a-b)/dmax;
+            break;
+        case "multiply":
+            r=(a*b)/dsum;
+            break;
+        case "divide":
+            r=a/b;
+            break;
+    }
+    return r;
+}
+</script>

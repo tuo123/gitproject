@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>角色管理</title>
+	<link>
+</head>
+<body>
+	<!--  表格  -->
+	<div class="grid-container">
+		<div id="toolbar-grid"></div>
+		<table id="data-grid" style="width: 100%"></table>
+	</div>
+
+	<!--  编辑表单 -->
+	<div id="role-win" class="easyui-window" title="编辑角色"
+		style="width: 650px; height: 500px;"
+		data-options="iconCls:'icon-save',modal:true,closed: true">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'west',title: '权限选择'" style="width: 280px; ">
+				<ul id="powername-tree"></ul>
+			</div>
+			<div data-options="region:'center',title: '角色表单'"
+				style="padding: 10px;">
+				<form id="role-form" method="post">
+					<input type="hidden" name="guid"> <input type="hidden"
+						name="menuguids" id="menuguids"> <input type="hidden"
+						name="powernames" id="powernames">
+					<div style="margin-bottom: 10px">
+						<input class="easyui-textbox" id="rolename" name="rolename"
+							style="width: 100%;" data-options="label:'角色名称:',required:true">
+					</div>
+					<div style="margin-bottom: 10px">
+						<input class="easyui-textbox" name="rolealias" id="rolealias"
+							style="width: 100%;" data-options="label:'角色编码:',required:true">
+					</div>
+					<div style="margin-bottom: 10px">
+						<select class="easyui-combobox" name="isenabled" id="isenabled"
+							data-options="label: '是否启用',editable: false , data:[{id: '1' , text: '是'},{id: '0', text: '否'}],valueField: 'id', textField: 'text'"
+							style="width: 100%;"></select>
+					</div>
+					<div style="text-align: center; padding: 5px 0">
+						<a href="javascript:void(0)" class="easyui-linkbutton form-submit"
+							style="width: 80px" iconCls="icon-key">保存</a> <a
+							href="javascript:void(0)" class="easyui-linkbutton form-clear"
+							style="width: 80px" iconCls="icon-cancel">清除</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 引入腳本  -->
+	<scripts th:replace="share/scripts :: scripts(~{::script})" >
+		<script type="text/javascript" src="/custom/xtsz/role/list-view.js"></script>
+	</scripts>
+</body>
+</html>

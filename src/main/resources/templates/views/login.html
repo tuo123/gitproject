@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>系统登陆</title>
+	<link type="text/css" href="/custom/css/login.css">
+</head>
+<body class="bg-img">
+	<div align="center" class="title"
+		style="font-size: 34px; margin-top: 100px; z-index: 9999;">
+		<div class="title-text">
+<!-- 			<img alt="" src="/custom/imgs/police-badge.png" width="180" style="vertical-align: middle;"> -->
+			时利和收费管理后台
+		</div>
+	</div>
+	<!--  编辑用户  -->
+	<div id="login-dlg" class="easyui-dialog" title="用户登陆"
+		style="width: 420px; height: 280px; line-height: 28px; padding: 20px"
+		data-options="iconCls:'icon-user',
+		closed: false,
+		draggable: false,
+		closable: false">
+
+		<form id="login-form" method="post">
+			<input type="hidden" name="guid"> <input type="hidden"
+				name="roleguids" id="roleguids">
+			<table border="0" width="100%">
+				<tr>
+					<td><input class="easyui-textbox" style="width: 95%;"
+						name="username" id="username-form" tipPosition="top"
+						prompt="请输入您的用户名" missingMessage="请输入您的用户名"
+						data-options="label:'用户名',required:true,icons: [{iconCls: 'icon-user'}]"></td>
+				</tr>
+				<tr>
+					<td>
+						<div style="margin-top: 20px;">
+							<input class="easyui-passwordbox" style="width: 95%;"
+								name="password" id="password-form" tipPosition="top"
+								prompt="请输入您的密码" missingMessage="请输入您的密码"
+								data-options="label:'登陆密码:',
+							required:true,
+							lastDelay: 1">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<div style="margin-top: 30px;">
+							<a href="javascript:void(0)"
+								class="easyui-linkbutton form-submit" style="width: 80px"
+								iconCls="icon-key">登陆</a> <a href="javascript:void(0)"
+								class="easyui-linkbutton form-clear-custom" style="width: 80px"
+								iconCls="icon-cancel">清除</a>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- 引入腳本  -->
+	<scripts th:replace="share/scripts :: scripts(~{::script})" >
+		<script type="text/javascript" src="/custom/xtsz/login.js"></script>
+	</scripts>
+</body>
+</html>

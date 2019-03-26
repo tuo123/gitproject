@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<scripts th:fragment="scripts(scripts)">
+	<script type="text/javascript" src="/easyui/jquery.1.10.2.js"></script>
+	<script type="text/javascript" src="/custom/plugins/jquery.cookie.1.4.1.js"></script>
+	<script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="/custom/js/easy-ui-extend.js"></script>
+	<script type="text/javascript" src="/custom/plugins/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="/custom/js/common.js"></script>
+	<th:block th:replace="${scripts}" />
+</scripts>
+</html>

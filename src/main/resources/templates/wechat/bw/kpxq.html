@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta th:replace="/wechat/wx_common/head"></meta>
+<title>开具电子发票</title>
+</head>
+<body>
+
+<div id="kpxq" style="display:none;">
+<form action="" method="post">
+<div style="width: 100%;text-align: left;margin-top: 10px 0 0 2px;  ">
+<span style="color:red;">&nbsp;&nbsp;电子发票最快5分钟开具，电子发票与纸质发票具有同等法律效力，可支持报销入账。</span>
+</div>
+ <div class="weui-cells weui-cells_form">
+ <input type="hidden" id="guids" th:value="${guids}" />
+ <input type="hidden" id="openid" th:value="${openid}" />
+     <div class="weui-cell ">
+     
+        <div class="weui-cell__hd"><label class="weui-label">发票抬头：</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text" id="fptt" readonly="readonly"  >
+        </div>
+        <div class="weui-cell__ft">
+        </div>
+      </div>
+      
+       <div class="weui-cell ">
+        <div class="weui-cell__hd"><label class="weui-label">发票内容：</label></div>
+        <div class="weui-cell__bd">
+<!--           <input class="weui-input" type="text" id="fpnr"  readonly="readonly" > -->
+          <div id="fpnr" ></div>
+          
+        </div>
+        <div class="weui-cell__ft">
+        </div>
+      </div>
+      
+       <div class="weui-cell ">
+        <div class="weui-cell__hd"><label class="weui-label">发票金额：</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text" id="fpje"  readonly="readonly" >
+        </div>
+        <div class="weui-cell__ft">
+        </div>
+      </div>
+
+       <div class="weui-cell ">
+        <div class="weui-cell__hd"><label class="weui-label">邮箱：</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="email" id="email"  placeholder="请填写您的电子邮箱">
+        </div>
+        <div class="weui-cell__ft">
+        </div>
+      </div>
+    
+
+    
+    </div>
+    
+    <div class="weui-btn-area"> 
+	<button  id="submit" type="button" class="weui-btn weui-btn_primary" style="width:45%;float:left;margin-top:15px;">提交</button>
+	 <button id="qk"  type="button" class="weui-btn weui-btn_default" style="width:45%;float:right;margin-bottom: 15px;">清空</button>
+	</div>
+</form>
+
+</div>
+
+<div th:replace="/wechat/wx_common/script"></div>
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/custom/wechat/bw/kpxq.js?random=' + Math.random()+'"></s'+'cript>');
+</script>
+
+</body>
+</html>

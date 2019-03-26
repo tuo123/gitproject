@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tuo.gitproject.mapper.mysqlxinyin.test.TestMapper">
+
+
+  <select id="selectByPrimaryKey" parameterType="java.util.Map" resultType="java.util.Map">
+    select 
+    *
+    from t_menu
+  </select>
+<sql id="filter">
+  where 1=1
+  <if test="module != null">
+    and module  like '%${module}%'
+  </if>
+  <if test="createUser != null">
+    and create_user like '%${createUser}%'
+  </if>
+  <if test="remark != null">
+    and remark like '%${remark}%'
+  </if>
+</sql>
+
+
+
+
+
+</mapper>

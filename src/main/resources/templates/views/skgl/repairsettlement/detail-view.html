@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<div style="margin-left:10px;" id="jsd-print-div">
+<a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-print'" style="width:100px;height:30px;" id="jsd-print-btn" >打印</a>
+<div style="width:100%;height:50px;font-family: verdana,arial,sans-serif;font-size:20px;color:#1E90FF;text-align:center;">
+	<span>TGPM</span><span style="margin-left:20px;" id="detail-company"></span>
+</div>
+<table width="100%">
+	<tr>
+		<td colspan="3" style="font-family: verdana,arial,sans-serif;font-size:20px;color:#1E90FF;text-align:center;">结算单</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" style="color:#1E90FF;">
+				<tr>
+					<td style="text-align:center;">打印日期:</td>
+					<td  id="detail-dyrq"></td>
+					<td style="text-align:center;">下次保养日期:</td>
+					<td style="text-align:center;" id="detail-xcbysj"></td>
+					<td style="text-align:center;">下次保养公里:</td>
+					<td style="text-align:center;" id="detail-xcbygl"></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" cellpadding="0" cellspacing="0"  style="font-family: verdana,arial,sans-serif;font-size:13px;color:#1E90FF;border: 1px solid #1E90FF;line-height: 20px;">
+				<tr >
+					<td style="text-align:center;border-bottom:1px dotted #1E90FF">结算单号</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-jsdNumber"></td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF">工单号</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-gdNumber"></td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF">预约单号</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-yydh"></td>
+				</tr>
+				<tr >
+					<td style="text-align:center;">结算日期</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF" id="detail-settleDate"></td>
+					<td style="text-align:center;border-left:1px solid #1E90FF">服务顾问</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF" id="detail-settlePerson"></td>
+					<td style="text-align:center;border-left:1px solid #1E90FF">制单人</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF" id="detail-zdr"></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="3">
+			<table width="100%" cellpadding="0" cellspacing="0"  style="line-height: 20px;font-family: verdana,arial,sans-serif;font-size:13px;color:#1E90FF;border: 1px solid #1E90FF;">
+				<tr>
+					<td style="text-align:center;border-bottom:1px dotted #1E90FF">车主</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-cz"></td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF">送修人</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-sxr"></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;border-bottom:1px dotted #1E90FF">手机</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-sj"></td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF">送修人电话</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" id="detail-sxrdh"></td>
+				</tr>
+				<tr style="border: 1px solid #1E90FF;">
+					<td style="text-align:center;">地址</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF" id="detail-czdz" colspan="3"></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table width="100%" cellpadding="0" cellspacing="0"  style="line-height: 20px;font-family: verdana,arial,sans-serif;font-size:13px;color:#1E90FF;border: 1px solid #1E90FF;">
+				<tr >
+					<td style="text-align:center;border-bottom:1px dotted #1E90FF">车型</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-cx"></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;border-bottom:1px dotted #1E90FF">颜色</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-ys"></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;border-bottom:1px dotted #1E90FF">VIN</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-dph"></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;">发动机号</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;" id="detail-fdjh"></td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table width="100%" cellpadding="0" cellspacing="0"  style="line-height: 20px;font-family: verdana,arial,sans-serif;font-size:13px;color:#1E90FF;border: 1px solid #1E90FF;">
+				<tr>
+					<td style="text-align:center;border-bottom:1px dotted #1E90FF">车牌号码</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-cphm"></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;border-bottom:1px dotted #1E90FF">进店时间</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-jdsj"></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;border-bottom:1px dotted #1E90FF">预交车时间</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-yjcsj"></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;">实际完工日期</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF" id="detail-sjwgrq"></td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table  width="100%" height="100%" cellpadding="0" cellspacing="0"  style="line-height: 27px;font-family: verdana,arial,sans-serif;font-size:13px;color:#1E90FF;border: 1px solid #1E90FF;">
+				<tr>
+					<td style="text-align:center;border-bottom:1px dotted #1E90FF">维修类别</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-repairType" ></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;border-bottom:1px dotted #1E90FF">进店油量</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-jdyl"></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;">进店里程</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF" id="detail-jdlc"></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" cellpadding="0" cellspacing="0"  style="line-height: 20px;font-family: verdana,arial,sans-serif;font-size:13px;color:#1E90FF;border: 1px solid #1E90FF;">
+				<tr>
+					<td style="text-align:center;border-bottom:1px solid #1E90FF">类别</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF">维修项目/零部件名称</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF">零部件号</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF">班组</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF">数量</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF">零部件金额</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF">工时费</td>
+					<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF">金额</td>
+				</tr>
+				<tbody id="detail-wxxmsAndPjs">
+				
+				</tbody>
+				
+				<tfooter>
+					<tr>
+						<td style="text-align:center;border-bottom:1px solid #1E90FF;font-size:16px;"colspan="2">费用列表</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF;font-size:16px;"colspan="2">费用列表</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF;font-size:16px;"colspan="2">收费对象</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF;font-size:16px;"colspan="2">应收账款</td>
+					</tr>
+					<tr>
+						<td style="text-align:center;border-bottom:1px dotted #1E90FF">工时费合计</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-gsfhj"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF">拖运费</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-tyf"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-sfdx" colspan="2"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" id="detail-yszk" colspan="2"></td>
+					</tr>
+					<tr>
+						<td style="text-align:center;border-bottom:1px solid #1E90FF">材料费合计</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" id="detail-clfhj"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF">交通费</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" id="detail-jtf"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" colspan="2"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" colspan="2"></td>
+					</tr>
+					<tr>
+						<td style="text-align:center;border-bottom:1px solid #1E90FF">销售材料合计</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" colspan="2"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" colspan="2"></td>
+					</tr>
+					<tr>
+						<td style="text-align:center;border-bottom:1px solid #1E90FF">附加项目合计</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" id="detail-fjxmhj"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" colspan="2"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" colspan="2"></td>
+					</tr>
+					<tr>
+						<td style="text-align:center;border-bottom:1px solid #1E90FF">工时折扣金额</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" id="detail-gszkje"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;" colspan="2" rowspan="5"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" colspan="2">完检人员</td>
+					</tr>
+					<tr>
+						<td style="text-align:center;border-bottom:1px solid #1E90FF">材料折扣金额</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" id="detail-clkje"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF"></td>
+<!-- 						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" colspan="2"></td> -->
+						<td style="text-align:center;border-left:1px solid #1E90FF;" colspan="2" rowspan="4"></td>
+					</tr>
+					<tr>
+						<td style="text-align:center;border-bottom:1px dotted #1E90FF">去零金额</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" >0</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF"></td>
+<!-- 						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" colspan="2"></td> -->
+<!-- 						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px dotted #1E90FF" colspan="2"></td> -->
+					</tr>
+					<tr>
+						<td style="text-align:center;border-bottom:1px solid #1E90FF">应收总计</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" id="detail-settleAmount"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF"></td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF"></td>
+<!-- 						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" colspan="2"></td> -->
+<!-- 						<td style="text-align:center;border-left:1px solid #1E90FF;border-bottom:1px solid #1E90FF" colspan="2"></td> -->
+					</tr>
+					<tr>
+						<td style="text-align:center;">实收金额</td>
+						<td style="text-align:center;border-left:1px solid #1E90FF;" colspan="3" id="detail-ssje"></td>
+<!-- 						<td style="text-align:center;border-left:1px solid #1E90FF;" colspan="2"></td> -->
+<!-- 						<td style="text-align:center;border-left:1px solid #1E90FF;" colspan="2"></td> -->
+					</tr>
+				</tfooter>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table width="100%" cellpadding="0" cellspacing="0"  style="line-height:30px;font-family: verdana,arial,sans-serif;font-size:13px;color:#1E90FF;border: 1px solid #1E90FF;">
+				<tr>
+					<td width="85%"  rowspan="2">&nbsp;</td>
+					<td style="border-left:1px solid #1E90FF;border-right:1px solid #1E90FF;" width="8px" height="40px" rowspan="4">&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="text-align:center;border-bottom:1px solid #1E90FF;">客户签字</td>
+				</tr>
+				<tr>
+					<td style="text-align:center;">&nbsp;</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3" style="text-align:center;font-family: verdana,arial,sans-serif;font-size:13px;color:#1E90FF;border-bottom: 1px solid #1E90FF;">
+			温馨提示:标记为“原厂件”的零件由广汽讴歌原厂提供，可享受广汽讴歌提供的三包服务，请参考随车附带的《广汽讴歌》
+		</td>
+	</tr>
+</table>
+</div>
+</html>

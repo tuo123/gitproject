@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<form id="pospay-form">
+			<table border="0" width="100%">
+				<tr>
+					<td width="50%">
+						<input style="width:95%" class="easyui-numberbox" id="TransAmount" name="TransAmount" data-options="label:'交易金额:',min:0,precision:2">
+					</td>
+<!-- 					<td width="50%"> -->
+<!-- 						<input  style="width:95%" class="easyui-numberbox" id="BusinessNo" name="BusinessNo" value="0001" data-options="label:'柜台编号:',min:0,precision:0"> -->
+<!-- 					</td> -->
+				</tr>
+<!-- 				<tr> -->
+<!-- 					<td width="50%"> -->
+<!-- 						<input  style="width:95%" class="easyui-numberbox" id="OrderNo" name="OrderNo" data-options="label:'订单单号:',min:0,precision:0"> -->
+<!-- 					</td> -->
+<!-- 					<td width="50%"> -->
+<!-- 						<input  style="width:95%" class="easyui-numberbox" id="OrgTraceNo" name="OrgTraceNo" data-options="label:'原凭证号:',min:0,precision:0"> -->
+<!-- 					</td> -->
+<!-- 				</tr> -->
+<!-- 				<tr> -->
+<!-- 					<td width="50%"> -->
+<!-- 						<input  style="width:95%" class="easyui-numberbox" id="OrgAuthNo" name="OrgAuthNo" data-options="label:'原授权号:',min:0,precision:0"> -->
+<!-- 					</td> -->
+<!-- 					<td width="50%"> -->
+<!-- 						<input  style="width:95%" class="easyui-numberbox" id="OrgDateTime" name="OrgDateTime"  data-options="label:'原交易日期:',min:0,precision:0"> -->
+<!-- 					</td> -->
+<!-- 				</tr> -->
+				<tr>
+					<td colspan="2" align="center">
+						<a href="javascript:void(0)" class="easyui-linkbutton" onclick="xf()" style="width: 80px" iconCls="icon-key">启动交易</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton" onclick="qk()" style="width: 80px" iconCls="icon-cancel">清空</a>
+					</td>
+				</tr>
+			</table>
+</form>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>维修结算单列表</title>
+	<link>
+</head>
+<body onload="ApplyConfig()">
+	<div id="ewm-div" style="display:none;"></div>
+
+	<div id="dw-dlg" class="easyui-dialog" title="选择单位" data-options="iconCls:'icon-save',closed:true" style="width: 300px; height: 450px; padding: 10px">
+		<ul class="easyui-tree" id="dw-tree"></ul>
+	</div>
+
+	<!--  表格  -->
+	<div class="grid-container">
+		<div id="toolbar-grid"></div>
+		<table id="data-grid" style="width: 100%;"></table>
+	</div>
+
+	<!--  详情 -->
+	<div id="jsd-detail" class="easyui-window" title="维修结算单详情"
+		style="padding: 10px"
+		 data-options="iconCls:'icon-save',
+		 modal:true,
+		 closed: true,
+		 width: '1000px',
+		 height: '300px',
+		 zIndex: '100'
+		 " >
+		<div th:replace="views/skgl/repairsettlement/detail-view :: div" ></div>
+	</div>
+	
+	<div id="ewm-pay" class="easyui-window" title="二维码支付"
+		style="padding: 10px"
+		 data-options="iconCls:'icon-save',
+		 modal:true,
+		 closed: true,
+		 width: '484px',
+		 height: '300px',
+		 zIndex: '100'
+		 " >
+		<div th:replace="views/skgl/repairsettlement/ewm-view :: div" ></div>
+	</div>
+	
+	<div id="pos-pay" class="easyui-window" title="pos机收款"
+		style="width: 350px; height: 200px"
+		data-options="iconCls:'icon-save',modal:true,closed: true">
+		<form id="pospay-form" style="padding: 20px;">
+			<input id="jsdhPos" type="hidden">
+			<div style="margin-bottom: 10px">
+				<select name="zffs" id="zffs-form" class="easyui-combobox" style="width:90%" data-options="label:'支付方式：',required:true,editable:false">
+					<option value="1">银行卡</option>
+					<option value="2">POS通</option>
+<!-- 					<option value="WeChat"  >微信</option> -->
+<!-- 					<option value="AliPay"  >支付宝</option> -->
+<!-- 					<option value="CupPay"  >银联二维码</option> -->
+				</select>
+			</div>
+			<div style="margin-bottom: 10px">
+				<input style="width:90%" class="easyui-numberbox" id="TransAmount" name="TransAmount" data-options="label:'交易金额:',min:0,precision:2,readonly:true">
+			</div>
+			<div style="text-align: center; padding: 5px 0">
+				<a href="javascript:void(0)" class="easyui-linkbutton" onclick="xf()" style="width: 80px" iconCls="icon-key">启动交易</a>
+			</div>
+		</form>
+	</div>
+	
+<!-- 	<div id="pos-pay" class="easyui-dialog" title="pos机收款" style="width: 550px; height: 200px; padding: 5px" data-options="iconCls:'icon-save',modal:true,closed: true"> -->
+<!-- 		<form th:replace="views/skgl/repairsettlement/pos-view :: form" ></form> -->
+<!-- 	</div> -->
+	
+	<div id="pos-pz" class="easyui-window" title="pos机配置"
+		style="width: 480px; height: 220px"
+		data-options="iconCls:'icon-save',modal:true,closed: true">
+		<form id="pospay-form" style="padding: 20px;">
+			<div style="margin-bottom: 10px">
+				<input class="easyui-textbox" style="width: 100%;" value="192.168.0.103" name="HostIP" id="HostIP" data-options="label:'主机地址',required:true">
+			</div>
+			<div style="margin-bottom: 10px">
+				<input class="easyui-textbox" style="width: 100%;" value="5556" name="HostPORT" id="HostPORT" data-options="label:'主机端口',required:true">
+			</div>
+			<div style="text-align: center; padding: 5px 0">
+				<a href="javascript:void(0)" class="easyui-linkbutton" onclick="checkInstallOCx()" style="width: 80px" iconCls="icon-key">检查控件</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton" onClick="GetOcxVersion()" style="width: 80px" iconCls="icon-key">控件版本</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton" onClick="ApplyConfig()" style="width: 80px" iconCls="icon-key">应用配置</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton" onClick="qd()" style="width: 80px" iconCls="icon-accept">签到</a>
+			</div>
+		</form>
+	</div>
+<!-- 	<div id="pos-pz" class="easyui-dialog" title="pos机收款" style="width: 550px; height: 200px; padding: 5px" data-options="iconCls:'icon-save',modal:true,closed: true"> -->
+<!-- 		<form th:replace="views/skgl/repairsettlement/pospz-view :: form" ></form> -->
+<!-- 	</div> -->
+	
+	<OBJECT id="vfUmsMisOcx" CLASSID="clsid:C8D41E31-41CE-40C6-A4FF-3D9A5702A5CE" style="LEFT:54px;TOP:14px" width="0px">
+	 <PARAM   NAME="CommuMode"   VALUE="1"/> 
+	 
+     <PARAM   NAME="CommPort"   VALUE="3"/> 
+     <PARAM   NAME="DataBits"   VALUE="8"/> 
+     <PARAM   NAME="StopBits"   VALUE="1"/> 
+     <PARAM   NAME="BaudRate"   VALUE="9600"/> 
+     <PARAM   NAME="Settings"   VALUE="9600,N,8,1"/>     
+
+     <PARAM   NAME="RTSEnable"   VALUE="1"/> 
+     <PARAM   NAME="DTREnable"   VALUE="1"/> 
+     <PARAM   NAME="Handshaking"   VALUE="0"/> 
+     <PARAM   NAME="NullDiscard"   VALUE="0"/> 
+     <PARAM   NAME="ParityReplace"   VALUE="?"/>
+ 
+     <PARAM   NAME="EOFEnable"   VALUE="0"/>       
+     <PARAM   NAME="InputMode"   VALUE="0"/>    
+     <PARAM   NAME="InBufferSize"   VALUE="1024"/>       
+     <PARAM   NAME="InputLen"   VALUE="0"/>     
+     <PARAM   NAME="OutBufferSize"   VALUE="512"/> 
+     
+     <PARAM   NAME="SThreshold"   VALUE="0"/> 
+     <PARAM   NAME="RThreshold"   VALUE="1"/> 
+	 
+	 <PARAM   NAME="CurTimeOut"   VALUE="180"/> 
+	 <PARAM   NAME="LogData"   VALUE=""/> 
+	 <PARAM   NAME="CtrlVersion"   VALUE=""/> 
+	 <PARAM   NAME="CurTransType"   VALUE=""/> 
+</OBJECT>
+	<!-- 引入腳本  -->
+	<scripts th:replace="share/scripts :: scripts(~{::script})" >
+		<script type="text/javascript" src="/custom/plugins/qrcode/jquery.qrcode.min.js"></script>
+		<script type="text/javascript" src="/custom/plugins/lodop/LodopFuncs.js"></script>
+		<script type="text/javascript" src="/custom/skgl/repairsettlement/list-view.js"></script>
+	</scripts>
+</body>
+</html>

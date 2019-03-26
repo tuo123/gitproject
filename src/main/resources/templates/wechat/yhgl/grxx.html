@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta th:replace="/wechat/wx_common/head"></meta>
+<title>个人信息</title>
+<style type="text/css">
+body{
+
+background-color: #ecf0f3;
+}
+
+
+</style>
+</head>
+
+<body>
+<input type="hidden" id = "openid" th:value = "${openid}">
+<div id="grxx" style="display:none;">
+
+<div class="weui-cells" >
+  <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <p><span >姓名：</span></p>
+    </div>
+    <div class="weui-cell__ft"><span id="name" style="color:#0bd8da;"></span></div>
+  </div>
+  
+    <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <p><span >车牌号码：</span></p>
+    </div>
+    <div class="weui-cell__ft"><span id="cphm" style="color:#0bd8da;"></span></div>
+  </div>
+
+    <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <p><span >底盘号：</span></p>
+    </div>
+    <div class="weui-cell__ft"><span id="dph" style="color:#0bd8da;"></span></div>
+  </div>
+  
+  
+</div>
+<div style="margin-top: 15px;">
+  <a href="javascript:;" class="weui-btn weui-btn_primary" id="edit">修改信息</a>
+  <a href="javascript:;" class="weui-btn weui-btn_primary" id='edit_jcbd' >解除绑定</a>
+  </div>
+
+</div>
+
+<div th:replace="/wechat/wx_common/script"></div>
+<script type="text/javascript">
+document.write('<script type="text/javascript" src="/custom/wechat/yhgl/grxx.js?random=' + Math.random()+'"></s'+'cript>');
+</script>
+</body>
+</html>

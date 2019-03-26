@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>功能列表</title>
+	<link>
+</head>
+<body>
+	<!--  表格  -->
+	<div class="grid-container">
+		<div id="toolbar-grid"></div>
+		<table id="data-grid" style="width: 100%;"></table>
+	</div>
+
+	<!--  编辑表单 -->
+	<div id="func-win" class="easyui-window" title="编辑功能"
+		style="width: 350px; height: 300px"
+		data-options="iconCls:'icon-save',modal:true,closed: true">
+		<form id="func-form" method="post" style="padding: 20px;">
+			<input type="hidden" name="guid">
+			<div style="margin-bottom: 10px">
+				<input class="easyui-textbox" id="funcname" name="funcname"
+					style="width: 100%;" data-options="label:'功能名称:',required:true">
+			</div>
+			<div style="margin-bottom: 10px">
+				<input class="easyui-textbox" name="funccode" id="funccode"
+					style="width: 100%;" data-options="label:'功能编码:',required:true">
+			</div>
+			<div style="text-align: center; padding: 5px 0">
+				<a href="javascript:void(0)" class="easyui-linkbutton form-submit"
+					style="width: 80px" iconCls="icon-key">保存</a> <a
+					href="javascript:void(0)" class="easyui-linkbutton form-clear"
+					style="width: 80px" iconCls="icon-cancel">清除</a>
+			</div>
+		</form>
+	</div>
+	
+	
+	<!-- 引入腳本  -->
+	<scripts th:replace="share/scripts :: scripts(~{::script})" >
+		<script type="text/javascript" src="/custom/xtsz/func/list-view.js"></script>
+	</scripts>
+</body>
+</html>

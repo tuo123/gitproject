@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="share/header :: header(~{::title},~{::link})">
+	<title>用户管理</title>
+	<link href="/custom/plugins/icheck-1.x/skins/flat/blue.css?v=1.0.2" rel="stylesheet">
+</head>
+<body>
+	<!--  表格  -->
+	<div class="grid-container">
+		<div id="toolbar-grid"></div>
+		<table id="data-grid" style="width: 100%"></table>
+	</div>
+	<!--  编辑用户  -->
+	<div id="user-dlg" class="easyui-dialog" title="编辑用户" style="width: 550px; height: 450px; padding: 5px" data-options="iconCls:'icon-save',modal:true,closed: true">
+		<form id="user-form" method="post">
+			<input type="hidden" name="guid">
+			<input type="hidden" name="roleguids" id="roleguids">
+			<input type="hidden" name="username" id="username-hide" value="" />
+			
+			<table border="0" width="100%">
+				<tr>
+					<td width="50%">
+						<input class="easyui-textbox" style="width: 95%;" name="usernameAlias" id="username-form" 
+						data-options="label:'用户名',required:true"
+						validType="remote['/user/checkUsername','username']"
+						invalidMessage="用户名已存在!" >
+						<span id="username-info"></span>
+					</td>
+					<td width="50%">
+						<input class="easyui-textbox" style="width: 95%;" name="realname" id="realname-form" data-options="label:'姓名',required:true">
+					</td>
+				</tr>
+				<tr id="pwd-group">
+					<td width="50%">
+						<input class="easyui-passwordbox" style="width: 95%;" name="password" id="password-form" data-options="label:'密码',required:true, lastDelay: 0">
+					</td>
+					<td width="50%">
+						<input class="easyui-passwordbox easyui-validatebox" style="width: 95%;" name="confirm-pwd" id="comfirm-pwd-form" data-options="label:'确认密码',lastDelay: 0" validType="equals['#password-form']" invalidMessage="两次输入的密码不一致">
+					</td>
+				</tr>
+				<tr>
+					<td width="50%">
+						<select class="easyui-combobox" style="width: 95%;" name="isenabled" id="isenabled-form" data-options="label: '是否启用',editable: false , data:[{id: '1' , text: '是'},{id: '0', text: '否'}],valueField: 'id', textField: 'text'"></select>
+					</td>
+						<td><select name="orgguid" id="orgguid" class="easyui-combobox"
+							style="width: 210px"
+							data-options="label:'单位：',
+							required:true,
+							url : '/org/findAll',
+							method : 'post',
+							valueField : 'guid',
+							textField : 'dwmc'
+							"></select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div>
+							<label>选择角色： </label>
+						</div>
+						<div align="left" style="width: 100%;" id="roles-area"></div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<a href="javascript:void(0)" class="easyui-linkbutton form-submit" style="width: 80px" iconCls="icon-key">保存</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton form-clear-custom" style="width: 80px" iconCls="icon-cancel">清除</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- 引入腳本  -->
+<scripts th:replace="share/scripts :: scripts(~{::script})" >
+<script type="text/javascript" src="/custom/plugins/icheck-1.x/icheck.min.js?v=1.0.2"></script>
+<script type="text/javascript" src="/custom/xtsz/user/list-view.js"></script>
+</scripts>
+</body>
+</html>
