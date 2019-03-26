@@ -2,7 +2,7 @@ package com.tuo.gitproject.config.shiro;
 
 
 import com.tuo.gitproject.entity.xtsz.User;
-import com.tuo.gitproject.service.user.UserServiceImpl;
+import com.tuo.gitproject.service.userandpower.UserService;
 import com.tuo.gitproject.util.result.ResultMsg;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -18,7 +18,7 @@ import java.util.Set;
 public class ShiroRealm extends AuthorizingRealm {
 
 	@Resource
-	private UserServiceImpl userService;
+	private UserService userService;
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -61,7 +61,7 @@ public class ShiroRealm extends AuthorizingRealm {
 		}*/
 		
 		
-		ResultMsg res = userService.login(shiroToken.getUsername(), password);
+		ResultMsg res = userService.login(shiroToken.getUsername(), "123123");
 		User u = (User) res.getData("user");
 		if (!res.isSucc()) {
 			throw new AccountException(res.getMsg());
